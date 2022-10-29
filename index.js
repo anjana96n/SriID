@@ -1,17 +1,15 @@
 import { registerRootComponent } from 'expo';
 import React from 'react';
-import { MyProvider } from './src/context';
 import App from './App';
+import { MyProvider } from './src/context';
 
-const Provider=()=>(
-<MyProvider>
-    <App/>
-</MyProvider>
+const provider = () =>(
+    <MyProvider>
+        <App/>
+    </MyProvider>
 )
 
-import App from './App';
-
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
+// registerRootComponent calls AppRegistry.registerComponent('main', () => provider);
+// It also ensures that whether you load the app in the Expo client or in a native build,
 // the environment is set up appropriately
-registerRootComponent(Provider);
+registerRootComponent(provider);

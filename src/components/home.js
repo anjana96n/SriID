@@ -6,7 +6,7 @@ const StageOne =() =>{
 
     return(
         <View>
-      <Text>Welcome to Sri ID</Text>
+      <Text>Welcome to Sri ID Home</Text>
       
     </View>
     )

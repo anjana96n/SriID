@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,ScrollView } from 'react-native';
 import{MyContext} from './src/context';
+import Home from './src/components/Home';
+import Details from './src/components/Details';
 
 class App extends Component {
 
@@ -8,10 +10,19 @@ class App extends Component {
 
   render()
 {  return (
+  <ScrollView>
     <View style={styles.container}>
-      <Text>Welcome to Sri ID !</Text>
-      
+      {
+        this.context.state.stage === 1 ?
+///one
+    <Home/>
+        :
+///two
+    <Details/>
+      }
     </View>
+  </ScrollView>
+    
   );
 }
 }
@@ -22,6 +33,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop:65
   },
 });
 
