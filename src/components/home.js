@@ -11,6 +11,7 @@ const context = useContext(MyContext)
 console.log(context)
 
     return(
+      <>
       <Formik 
       initialValues={{idn:''}}
       
@@ -21,7 +22,8 @@ console.log(context)
         .required('Sorry id num is required')
       })}
       onSubmit={(values,{resetForm})=>{
-        alert(values)
+        context.addID(values.idn)
+        resetForm()
 
       }}
       >
@@ -58,6 +60,10 @@ console.log(context)
       )}
       
     </Formik>
+    <View>
+      
+    </View>
+    </>
     )
 
 }

@@ -10,14 +10,23 @@ class MyProvider extends Component {
         idnum :[],
         bday:''
     }
-
+ 
+    addIDnum=(idcard) =>{
+        this.setState((prevState,props)=>({
+            idnum:[
+                ...prevState.idnum,
+                idcard
+            ]
+        }))
+    }
     
 
     render(){
         return(
             <>
             <MyContext.Provider value={{
-                state: this.state
+                state: this.state,
+                addID:this.addIDnum
              }}>
                 {this.props.children}
 
