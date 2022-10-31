@@ -8,7 +8,23 @@ import { MyContext } from '../context';
 
 const StageOne =() =>{
 const context = useContext(MyContext)
-console.log(context)
+
+const renderPlayers = () => (
+  context.state.idnum.map((item,idx)=>(
+      <ListItem
+          key={idx}
+          bottomDivider
+          style={{ width:'100%' }}
+          onLongPress={()=> context.removeID(idx)}
+      >
+          <ListItem.Chevron/>
+          <ListItem.Content>
+              <ListItem.Title>{item}</ListItem.Title>
+          </ListItem.Content>
+      </ListItem>
+  ))
+)
+//console.log(context)
 
     return(
       <>
@@ -60,9 +76,21 @@ console.log(context)
       )}
       
     </Formik>
-    <View>
-      
-    </View>
+    <View style={{padding:20,width:'100%'}}>
+            {
+                context.state.idnum && context.state.idnum.length > 0 ?
+                    <>
+                    <Text>List of players</Text>
+                    {renderPlayers()}
+                    <Button
+                        buttonStyle={styles.button}
+                        title="Get the looser"
+                        onPress={()=> context.next()}
+                    />
+                    </>
+                :null
+            }
+        </View>
     </>
     )
 
