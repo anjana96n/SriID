@@ -9,7 +9,7 @@ import { MyContext } from '../context';
 const StageOne =() =>{
 const context = useContext(MyContext)
 
-const renderPlayers = () => (
+const renderDetails = () => (
   context.state.idnum.map((item,idx)=>(
       <ListItem
           key={idx}
@@ -80,13 +80,9 @@ const renderPlayers = () => (
             {
                 context.state.idnum && context.state.idnum.length > 0 ?
                     <>
-                    <Text>List of players</Text>
-                    {renderPlayers()}
-                    <Button
-                        buttonStyle={styles.button}
-                        title="Get the looser"
-                        onPress={()=> context.next()}
-                    />
+                    <Text>Details</Text>
+                     {renderDetails()}
+              
                     </>
                 :null
             }
