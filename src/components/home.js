@@ -45,7 +45,7 @@ const renderDetails = () => (
       >
       {({handleChange,handleBlur,handleSubmit,values,touched,errors})=>(
         <>
-        <Text>Sri Lanka ID Card details</Text>
+        <Text>SriLanka ID Card details</Text>
 
         <Input
       placeholder='INPUT ID CARD NUMBER'
