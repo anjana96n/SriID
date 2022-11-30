@@ -10,16 +10,20 @@ const StageOne =() =>{
 const context = useContext(MyContext)
 
 const renderDetails = () => (
+  
   context.state.idnum.map((item,idx)=>(
+      
       <ListItem
           key={idx}
           bottomDivider
           style={{ width:'100%' }}
-          onLongPress={()=> context.removeID(idx)}
+         
       >
           <ListItem.Chevron/>
           <ListItem.Content>
-              <ListItem.Title>{item}</ListItem.Title>
+            
+            
+              <ListItem.Title>Birthday Year :{item[0]}</ListItem.Title>
           </ListItem.Content>
       </ListItem>
   ))
@@ -45,7 +49,7 @@ const renderDetails = () => (
       >
       {({handleChange,handleBlur,handleSubmit,values,touched,errors})=>(
         <>
-        <Text>SriLanka ID Card details</Text>
+        <Text>Sri Lanka ID Card details</Text>
 
         <Input
       placeholder='INPUT ID CARD NUMBER'
