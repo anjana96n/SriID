@@ -3,29 +3,48 @@ import { StyleSheet,  View } from 'react-native';
 import{Formik} from 'formik';
 import *as Yup from 'yup';
 import {Input,Button,ListItem,Text} from 'react-native-elements';
-
 import { MyContext } from '../context';
+
+let yr;
+let yr1;
+let mn;
+let mn1;
+let mn2
+let dy;
+let dy1;
+let day;
+
+
+
+var getDaysInMonth = function(month,year) {
+ return new Date(year, month, 0).getDate();
+};
+
+var getMonth = function(days) {
+  if(days<=31){
+    return 1;
+  }
+else {
+ for (let i = 1; i < 13; i++) {
+
+  
+ }
+}
+ };
 
 const StageOne =() =>{
 const context = useContext(MyContext)
-
 const renderDetails = () => (
-  
+ 
   context.state.idnum.map((item,idx)=>(
+    yr=190+item[0]*1+item[1],
+    yr1 = parseInt(yr),
+    mn=item[2]+item[3]+item[4],
+    mn1=parseInt(mn),  
       
-      <ListItem
-          key={idx}
-          bottomDivider
-          style={{ width:'100%' }}
-         
-      >
-          <ListItem.Chevron/>
-          <ListItem.Content>
-            
-            
-              <ListItem.Title>Birthday Year :{item[0]}</ListItem.Title>
-          </ListItem.Content>
-      </ListItem>
+    <Text key={idx}>Birthday Year :{yr1} 
+          Month:{getMonth(mn1, yr1)}</Text>
+    
   ))
 )
 //console.log(context)
@@ -37,8 +56,8 @@ const renderDetails = () => (
       
       validationSchema={Yup.object({
         idn:Yup.string()
-        .min(10,'enter valid id ')
-        .max(15,'not more than 15 value')
+        .min(10,'Enter valid id ')
+        .max(15,'Not more than 15 value')
         .required('Sorry id num is required')
       })}
       onSubmit={(values,{resetForm})=>{
