@@ -9,28 +9,30 @@ let yr;
 let yr1;
 let mn;
 let mn1;
-let mn2
+let mn2;
 let dy;
 let dy1;
 let day;
+let i;
 
 
-
-var getDaysInMonth = function(month,year) {
- return new Date(year, month, 0).getDate();
+var getDaysInMonth = function(month,yr1) {
+ return new Date(yr1, month, 0).getDate();
 };
 
-var getMonth = function(days) {
-  if(days<=31){
-    return 1;
-  }
-else {
- for (let i = 1; i < 13; i++) {
+function getMonth(mn1) {
+while(mn1<getDaysInMonth(i+1)){
 
-  
+ for ( i=1 ; i < 12; i++) {
+  mn1=mn1-getDaysInMonth(i,yr1);
  }
 }
+return i;
  };
+
+ 
+
+
 
 const StageOne =() =>{
 const context = useContext(MyContext)
@@ -43,7 +45,7 @@ const renderDetails = () => (
     mn1=parseInt(mn),  
       
     <Text key={idx}>Birthday Year :{yr1} 
-          Month:{getMonth(mn1, yr1)}</Text>
+          Month:{getMonth(mn1)}</Text>
     
   ))
 )
