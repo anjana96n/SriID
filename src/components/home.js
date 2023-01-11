@@ -9,10 +9,6 @@ let yr;
 let yr1;
 let mn;
 let mn1;
-let mn2;
-let dy;
-let dy1;
-let day;
 let i;
 
 
@@ -21,14 +17,36 @@ var getDaysInMonth = function(month,yr1) {
 };
 
 function getMonth(mn1) {
-while(mn1<getDaysInMonth(i+1)){
+  if(mn1<getDaysInMonth(1,yr1)){
+return 1;
+  }
+  else{
+    for ( i=1 ; i < 12; i++) {
+      mn1=mn1-getDaysInMonth(i,yr1);
+       if(mn1<getDaysInMonth((i+1),yr1)){
 
- for ( i=1 ; i < 12; i++) {
-  mn1=mn1-getDaysInMonth(i,yr1);
- }
-}
-return i;
+        return i+1;
+       }
+
+  }
+ } 
  };
+
+ function getDay(mn1){
+  if(mn1<getDaysInMonth(1,yr1)){
+    return mn1;
+      }
+      else{
+        for ( i=1 ; i < 12; i++) {
+          mn1=mn1-getDaysInMonth(i,yr1);
+           if(mn1<getDaysInMonth((i+1),yr1)){
+    
+            return mn1;
+           }
+    
+      }
+     } 
+ }
 
  
 
@@ -41,11 +59,13 @@ const renderDetails = () => (
   context.state.idnum.map((item,idx)=>(
     yr=190+item[0]*1+item[1],
     yr1 = parseInt(yr),
-    mn=item[2]+item[3]+item[4],
+    mn=(item[2]*100)+(item[3]*10)+(item[4]*1),
     mn1=parseInt(mn),  
       
     <Text key={idx}>Birthday Year :{yr1} 
-          Month:{getMonth(mn1)}</Text>
+          Month: {getMonth(mn1)}
+          Day: {getDay(mn1)}
+          </Text>
     
   ))
 )
